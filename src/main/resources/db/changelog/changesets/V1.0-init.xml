@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+  <changeSet id="1" author="mosesonline">
+    <createTable tableName="contacts">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" unique="true" nullable="false"/>
+      </column>
+      <column name="partner_id" type="uuid"/>
+      <column name="name" type="varchar(64)"/>
+    </createTable>
+    <createTable tableName="contact_channels">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" unique="true" nullable="false"/>
+      </column>
+      <column name="channel_type" type="varchar(36)"/>
+      <column name="e_mail_type" type="varchar(64)"/>
+      <column name="email" type="varchar(320)"/>
+      <column name="phone_number" type="varchar(64)"/>
+      <column name="phone_type" type="varchar(64)"/>
+      <column name="contact_info" type="varchar(512)"/>
+    </createTable>
+    <createTable tableName="partner_contacts_channels">
+      <column name="partner_contacts_id" type="uuid"/>
+      <column name="channels_id" type="uuid"/>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
